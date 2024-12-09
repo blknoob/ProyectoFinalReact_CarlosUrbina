@@ -4,7 +4,8 @@ function Navbar() {
   return (
     <nav className="bg-gray-900 p-4">
       <ul className="flex space-x-8 justify-center">
-        <li>
+
+      <li>
           <Link
             to="/"
             className="text-gray-400 hover:text-white transition duration-200 text-lg"
@@ -12,6 +13,17 @@ function Navbar() {
             Inicio
           </Link>
         </li>
+
+
+        <li>
+          <Link
+            to="/allProducts"
+            className="text-gray-400 hover:text-white transition duration-200 text-lg"
+          >
+            Todos Nuestros Productos
+          </Link>
+        </li>
+
         <li className="relative group">
           <Link
             to="/category/bicicleta"
@@ -46,23 +58,76 @@ function Navbar() {
             </li>
           </ul>
         </li>
-        <li>
+
+        <li className="relative group">
           <Link
-            to="/category/vestimenta+bicicleta"
+            to="/category/indumentaria"
             className="text-gray-400 hover:text-white transition duration-200 text-lg"
           >
-            Vestimenta Bicicleta
+            Indumentaria
           </Link>
+          <ul className="absolute hidden group-hover:block bg-gray-800 p-2 space-y-2">
+            <li>
+              <Link
+                to="/category/indumentaria/camiseta"
+                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+              >
+                Camiseta
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/category/indumentaria/casco"
+                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+              >
+                Casco
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/category/indumentaria/guante"
+                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+              >
+                Guante
+              </Link>
+            </li>
+          </ul>
         </li>
-        <li>
+
+        <li className="relative group">
           <Link
-            to="/category/componentes+bicicleta"
+            to="/category/componentes"
             className="text-gray-400 hover:text-white transition duration-200 text-lg"
           >
-            Componentes Bicicleta
+            Componentes y Accesorios
           </Link>
+          <ul className="absolute hidden group-hover:block bg-gray-800 p-2 space-y-2">
+            <li>
+              <Link
+                to="/category/componentes/freno"
+                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+              >
+                Frenos
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/category/componentes/llantas"
+                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+              >
+                Llantas
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/category/componentes/plato"
+                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+              >
+                Platos
+              </Link>
+            </li>
+          </ul>
         </li>
-        <li></li>
       </ul>
     </nav>
   );

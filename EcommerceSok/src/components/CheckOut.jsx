@@ -14,15 +14,13 @@ import {
 export const CheckOut = () => {
   const [order, setOrder] = useState(false);
 
-  // Campos del formulario
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
 
-  // Método de pago seleccionado
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [pay, setpay] = useState("");
   const [error, setError] = useState("");
 
   const { cart, TotalPrice, clearCart, TotalItems } = useCart();
@@ -30,15 +28,14 @@ export const CheckOut = () => {
   const totalItems = TotalItems();
 
   const createOrder = async (e) => {
-    e.preventDefault(); // Evitar recarga de la página
+    e.preventDefault();
 
-    // Validaciones
     if (!nombre || !apellido || !direccion || !telefono || !email) {
       setError("Todos los campos son obligatorios.");
       return;
     }
 
-    if (!paymentMethod) {
+    if (!pay) {
       setError("Selecciona un método de pago.");
       return;
     }
@@ -51,14 +48,11 @@ export const CheckOut = () => {
         email: email,
         address: direccion,
       },
-      paymentMethod, // Agregar método de pago
-      items: cart,
+      pay,
       totalItems,
       totalPrice,
       date: new Date(),
     };
-
-    console.log(objectOrder);
 
     try {
       const ids = cart.map((item) => item.id);
@@ -96,94 +90,125 @@ export const CheckOut = () => {
   };
 
   return (
-    <div>
-      {order ? (
-        <p>Compra realizada con éxito</p>
-      ) : (
-        <>
-          <h2>Ingresa tus Datos</h2>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <form onSubmit={createOrder}>
-            {/* Formulario para datos del comprador */}
-            <div>
-              <label>Nombre:</label>
-              <input
-                type="text"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Apellido:</label>
-              <input
-                type="text"
-                value={apellido}
-                onChange={(e) => setApellido(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Dirección:</label>
-              <input
-                type="text"
-                value={direccion}
-                onChange={(e) => setDireccion(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Teléfono:</label>
-              <input
-                type="text"
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+    <div className="min-h-screen bg-gray-100 py-10 flex justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+        {order ? (
+          <p className="text-center text-green-600 font-bold text-2xl">
+            Compra realizada con éxito!
+          </p>
+        ) : (
+          <>
+            <h2 className="text-3xl font-bold text-center mb-6 text-gray-900">
+              Ingresa tus Datos
+            </h2>
+            {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+            <form onSubmit={createOrder} className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-gray-700 font-semibold">
+                    Nombre:
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 border border-gray-300 rounded-lg"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-semibold">
+                    Apellido:
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 border border-gray-300 rounded-lg"
+                    value={apellido}
+                    onChange={(e) => setApellido(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold">
+                  Dirección:
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  value={direccion}
+                  onChange={(e) => setDireccion(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold">
+                  Teléfono:
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  value={telefono}
+                  onChange={(e) => setTelefono(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold">
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
 
-            {/* Selección de método de pago */}
-            <div>
-              <h3>Métodos de Pago</h3>
-              <label>
-                <input
-                  type="radio"
-                  value="Tarjeta de Crédito"
-                  checked={paymentMethod === "Tarjeta de Crédito"}
-                  onChange={(e) => setPaymentMethod(e.target.value)}
-                />
-                Tarjeta de Crédito
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  value="PayPal"
-                  checked={paymentMethod === "PayPal"}
-                  onChange={(e) => setPaymentMethod(e.target.value)}
-                />
-                PayPal
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  value="Transferencia Bancaria"
-                  checked={paymentMethod === "Transferencia Bancaria"}
-                  onChange={(e) => setPaymentMethod(e.target.value)}
-                />
-                Transferencia Bancaria
-              </label>
-            </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  Métodos de Pago
+                </h3>
+                <div className="flex items-center space-x-4">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value="Tarjeta de Crédito"
+                      checked={pay === "Tarjeta de Crédito"}
+                      onChange={(e) => setpay(e.target.value)}
+                    />
+                    Tarjeta de Crédito
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value="PayPal"
+                      checked={pay === "PayPal"}
+                      onChange={(e) => setpay(e.target.value)}
+                    />
+                    PayPal
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value="Transferencia Bancaria"
+                      checked={pay === "Transferencia Bancaria"}
+                      onChange={(e) => setpay(e.target.value)}
+                    />
+                    Transferencia Bancaria
+                  </label>
+                </div>
+              </div>
 
-            <button type="submit">Finalizar Compra</button>
-          </form>
-        </>
-      )}
+              <button
+                type="submit"
+                className="w-full bg-green-700 text-white py-3 font-bold rounded-lg hover:bg-green-800 transition duration-300"
+              >
+                Finalizar Compra
+              </button>
+            </form>
+          </>
+        )}
+      </div>
     </div>
   );
 };

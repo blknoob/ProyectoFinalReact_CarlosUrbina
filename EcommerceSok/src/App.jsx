@@ -4,9 +4,11 @@ import ItemListContainer from "./components/ItemListContainer";
 import Navbar from "./components/Navbar";
 import { Cart } from "./components/Cart";
 import CheckOut from "./components/CheckOut";
+import Home from "./components/Home";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
           <Navbar />
 
           <Routes>
-            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/allProducts" element={<ItemListContainer />} />
             <Route path="/detail/:detailId" element={<ItemDetailContain />} />
             <Route
               path="/category/:categoryId"
@@ -30,6 +33,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<CheckOut />} />
           </Routes>
+          <Footer />
         </CartProvider>
       </BrowserRouter>
     </>

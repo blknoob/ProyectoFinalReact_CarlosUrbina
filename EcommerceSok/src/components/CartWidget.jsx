@@ -1,30 +1,36 @@
+import { useCart } from "../hooks/useCart"; // Importar el hook personalizado
+
 function CartWidget() {
+  const { TotalItems } = useCart(); // Obtener la cantidad total de productos en el carrito
+
   return (
-    <>
+    <div className="relative">
       <a href="#" className="CartWidget">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          fill="currentColor"
-          className="bi bi-0-circle-fill"
-          viewBox="0 0 16 16"
+          className="h-8 w-8 text-gray-800"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          stroke="currentColor"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          <path d="M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895" />
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99" />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          fill="currentColor"
-          className="bi bi-cart"
-          viewBox="0 0 16 16"
-        >
-          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+          <path stroke="none" d="M0 0h24v24H0z" />
+          <circle cx="9" cy="19" r="2" />
+          <circle cx="17" cy="19" r="2" />
+          <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
         </svg>
       </a>
-    </>
+
+      {/* Mostrar el total de productos si es mayor que 0 */}
+      {TotalItems() > 0 && (
+        <span className="absolute -top-2 -right-2 bg-green-700 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+          {TotalItems()}
+        </span>
+      )}
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        imgHeader: "url('./src/assets/imgSokCores.jpg')",
+        imgHeader: "url('/public/images/imgSokCores.jpg')",
       },
     },
   },

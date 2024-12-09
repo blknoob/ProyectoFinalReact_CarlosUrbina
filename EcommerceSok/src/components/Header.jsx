@@ -8,7 +8,7 @@ const Header = () => {
         <Link to="/">
           <img
             className="flex flex-row justify-center rounded-full h-16 md:h-20 p-2 border-4 border-black"
-            src="/../src/assets/logoSokCores.jpg"
+            src="/images/logoSokCores2.jpg"
             alt="Logo Sok Cores"
           />
         </Link>

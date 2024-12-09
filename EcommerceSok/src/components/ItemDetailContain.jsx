@@ -17,7 +17,6 @@ const ItemDetailContain = () => {
         const resp = await getDoc(detailRef);
         if (resp.exists()) {
           setDetail({ ...resp.data(), id: resp.id });
-          
         }
       } catch (error) {
         console.log("Error", error);
@@ -28,7 +27,6 @@ const ItemDetailContain = () => {
 
     fetchDetail();
   }, [detailId]);
-  
 
   if (loading) {
     return <p className="text-center text-lg">Cargando detalles...</p>;
