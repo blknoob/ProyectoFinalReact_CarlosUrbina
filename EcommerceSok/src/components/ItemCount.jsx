@@ -39,7 +39,7 @@ function ItemCount({ stock, aggregateCart }) {
 
       <button
         onClick={() => aggregateCart(count)}
-        className="w-full py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all"
+        className="w-full py-3 bg-blue-800 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-blue-900 transition-all"
       >
         Agregar al carrito
       </button>

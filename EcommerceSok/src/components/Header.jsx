@@ -3,20 +3,29 @@ import CartWidget from "./CartWidget";
 
 const Header = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between  bg-imgHeader bg-center bg-cover h-80 p-6">
-      <div className="flex space-x-4 h-24">
-        <Link to="/">
-          <img
-            className="flex flex-row justify-center rounded-full h-16 md:h-20 p-2 border-4 border-black"
-            src="/images/logoSokCores2.jpg"
-            alt="Logo Sok Cores"
-          />
-        </Link>
-        <Link to="/" className="text-3xl font-bold text-gray-500">Sok Cores</Link>
-      </div>
+    <header className="bg-imgHeader bg-center bg-cover h-64">
+      <div className="flex flex-col md:flex-row items-center justify-between max-w-full mx-auto p-4">
+        <div className="flex items-center space-x-2">
+          <Link to="/">
+            <img
+              className="h-16 w-16 rounded-full border-2 border-black object-contain"
+              src="/images/logoSokCores2.jpg"
+              alt="Logo Sok Cores"
+            />
+          </Link>
+          <Link
+            to="/"
+            className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition"
+          >
+            Sok Cores
+          </Link>
+        </div>
 
-      <CartWidget />
-    </div>
+        <div className="ml-auto">
+          <CartWidget />
+        </div>
+      </div>
+    </header>
   );
 };
 

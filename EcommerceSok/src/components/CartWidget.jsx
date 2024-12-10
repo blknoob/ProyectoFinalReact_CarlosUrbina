@@ -1,7 +1,7 @@
-import { useCart } from "../hooks/useCart"; // Importar el hook personalizado
+import { useCart } from "../hooks/useCart";
 
 function CartWidget() {
-  const { TotalItems } = useCart(); // Obtener la cantidad total de productos en el carrito
+  const { TotalItems } = useCart();
 
   return (
     <div className="relative">
@@ -24,7 +24,6 @@ function CartWidget() {
         </svg>
       </a>
 
-      {/* Mostrar el total de productos si es mayor que 0 */}
       {TotalItems() > 0 && (
         <span className="absolute -top-2 -right-2 bg-green-700 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
           {TotalItems()}

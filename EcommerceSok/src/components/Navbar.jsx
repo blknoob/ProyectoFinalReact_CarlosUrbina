@@ -1,41 +1,63 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <nav className="bg-gray-900 p-4">
-      <ul className="flex space-x-8 justify-center">
+  const [hamburger, sethamburger] = useState(false);
 
-      <li>
+  const hamMenu = () => sethamburger(!hamburger);
+
+  return (
+    <nav className="bg-gray-800 p-4 shadow-md">
+      <div className="flex justify-between items-center">
+        <button
+          className="text-white text-2xl md:hidden focus:outline-none"
+          onClick={hamMenu}
+          aria-label="Abrir menú"
+        >
+          ☰
+        </button>
+      </div>
+
+      <ul
+        className={`${
+          hamburger ? "block" : "hidden"
+        } mt-4 md:mt-0 md:flex md:space-x-8 md:items-center md:justify-center`}
+      >
+        <li>
           <Link
             to="/"
-            className="text-gray-400 hover:text-white transition duration-200 text-lg"
+            className="block text-white hover:text-yellow-600 p-2 text-lg font-semibold"
           >
             Inicio
           </Link>
         </li>
 
-
         <li>
           <Link
             to="/allProducts"
-            className="text-gray-400 hover:text-white transition duration-200 text-lg"
+            className="block text-white hover:text-yellow-600 p-2 text-lg font-semibold"
           >
             Todos Nuestros Productos
           </Link>
         </li>
 
         <li className="relative group">
-          <Link
-            to="/category/bicicleta"
-            className="text-gray-400 hover:text-white transition duration-200 text-lg"
-          >
+          <span className="block text-white hover:text-yellow-600 p-2 text-lg font-semibold cursor-pointer">
             Bicicletas
-          </Link>
-          <ul className="absolute hidden group-hover:block bg-gray-800 p-2 space-y-2">
+          </span>
+          <ul className="hidden group-hover:block md:absolute bg-white rounded-md shadow-lg">
+            <li>
+              <Link
+                to="/category/bicicleta"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
+              >
+                Todo Bicicletas
+              </Link>
+            </li>
             <li>
               <Link
                 to="/category/bicicletas/ruta"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Ruta
               </Link>
@@ -43,7 +65,7 @@ function Navbar() {
             <li>
               <Link
                 to="/category/bicicletas/montana"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Montaña
               </Link>
@@ -51,7 +73,7 @@ function Navbar() {
             <li>
               <Link
                 to="/category/bicicletas/paseo"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Paseo
               </Link>
@@ -60,17 +82,22 @@ function Navbar() {
         </li>
 
         <li className="relative group">
-          <Link
-            to="/category/indumentaria"
-            className="text-gray-400 hover:text-white transition duration-200 text-lg"
-          >
+          <span className="block text-white hover:text-yellow-600 p-2 text-lg font-semibold cursor-pointer">
             Indumentaria
-          </Link>
-          <ul className="absolute hidden group-hover:block bg-gray-800 p-2 space-y-2">
+          </span>
+          <ul className="hidden group-hover:block md:absolute bg-white rounded-md shadow-lg">
+            <li>
+              <Link
+                to="/category/indumentaria"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
+              >
+                Todo Indumentaria
+              </Link>
+            </li>
             <li>
               <Link
                 to="/category/indumentaria/camiseta"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Camiseta
               </Link>
@@ -78,7 +105,7 @@ function Navbar() {
             <li>
               <Link
                 to="/category/indumentaria/casco"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Casco
               </Link>
@@ -86,7 +113,7 @@ function Navbar() {
             <li>
               <Link
                 to="/category/indumentaria/guante"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Guante
               </Link>
@@ -95,17 +122,22 @@ function Navbar() {
         </li>
 
         <li className="relative group">
-          <Link
-            to="/category/componentes"
-            className="text-gray-400 hover:text-white transition duration-200 text-lg"
-          >
+          <span className="block text-white hover:text-yellow-600 p-2 text-lg font-semibold cursor-pointer">
             Componentes y Accesorios
-          </Link>
-          <ul className="absolute hidden group-hover:block bg-gray-800 p-2 space-y-2">
+          </span>
+          <ul className="hidden group-hover:block md:absolute bg-white rounded-md shadow-lg">
+            <li>
+              <Link
+                to="/category/componentes"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
+              >
+                Todo Componentes y Accesorios
+              </Link>
+            </li>
             <li>
               <Link
                 to="/category/componentes/freno"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Frenos
               </Link>
@@ -113,7 +145,7 @@ function Navbar() {
             <li>
               <Link
                 to="/category/componentes/llantas"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Llantas
               </Link>
@@ -121,7 +153,7 @@ function Navbar() {
             <li>
               <Link
                 to="/category/componentes/plato"
-                className="text-gray-400 hover:text-white transition duration-200 text-lg"
+                className="block px-4 py-2 text-gray-700 hover:bg-yellow-600 hover:text-white"
               >
                 Platos
               </Link>

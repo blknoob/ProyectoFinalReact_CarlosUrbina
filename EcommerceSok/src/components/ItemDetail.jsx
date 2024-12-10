@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const ItemDetail = ({ detail }) => {
   const { isInCart, addToCart } = useCart();
 
+  const isProductInCart = isInCart(detail.id);
+
   const buttonAdd = (count) => {
     const aggregateProduct = {
       id: detail.id,
@@ -38,14 +40,14 @@ const ItemDetail = ({ detail }) => {
           <strong>Disponible:</strong> {detail.stock} unidades
         </p>
 
-        <p className="text-gray-700">
-          🚴‍♂️ **Explora la aventura y diversión en contacto con la naturaleza.**
-        </p>
-
         <div className="flex justify-center lg:justify-start">
           <Link
             to="/cart"
-            className="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-all"
+            className={`py-2 px-4 rounded-lg font-semibold shadow-md transition-all ${
+              isProductInCart
+                ? "bg-green-700 text-white hover:bg-green-800"
+                : "bg-blue-800 text-white hover:bg-blue-900"
+            }`}
           >
             Ir al carrito
           </Link>

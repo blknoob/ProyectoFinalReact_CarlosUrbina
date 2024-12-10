@@ -6,7 +6,7 @@ const Item = ({ prod }) => {
       <img
         src={prod.img}
         alt={prod.tittle}
-        className="size-full object-cover rounded-t-lg"
+        className="size-full w-auto object-cover rounded-t-lg"
       />
       <div className="p-6">
         <h2 className="text-xl font-semibold text-gray-800 truncate">
